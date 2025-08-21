@@ -8,13 +8,15 @@
                         <div class="col-6">
                             <label for="username" class="form-label">Username</label>
                             <input type="text" 
-                            class="form-control" id="username" v-model="formData.username">
+                            class="form-control" id="username" required v-model="formData.username">
                         </div>
                         <div class="col-6">
                             <label for="password" class="form-label">Password</label>
                             <input type="password" 
                             class="form-control" 
                             id="password" 
+                            minlength="4"
+                            maxlength="10"
                             v-model="formData.password">
                         </div>
                     </div>

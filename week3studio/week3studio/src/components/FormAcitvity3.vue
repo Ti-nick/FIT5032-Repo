@@ -1,11 +1,11 @@
 <template>
     <div class="container mt-5">
         <div class="row">
-            <div class="col-md-8 offset-md-2">
+            <div class="col-12 col-md-8 offset-md-2">
                 <h1 class="text-center">User Information Form</h1>
                 <form @submit.prevent="submitForm">
                     <div class="row mb-3">
-                        <div class="col-md-6">
+                        <div class="col-6">
                             <label for="username" class="form-label">Username</label>
                             <input type="text" 
                             @blur="() => validateName(true)" 
@@ -13,7 +13,7 @@
                             class="form-control" id="username" v-model="formData.username">
                             <div v-if="errors.username" class="text-danger">{{ errors.username }}</div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-6">
                             <label for="password" class="form-label">Password</label>
                             <input type="password" 
                             class="form-control" 
@@ -25,16 +25,19 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <div class="col-md-6">
+                        <div class="col-6">
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" id="isAustralian" 
+                                @blur="() => validateResident(true)"
+                                @input="() => validateResident(false)"
                                 v-model="formData.isAustralian">
                                 <label class="form-check-label" for="isAustralian">
                                     Australian Resident?
                                 </label>
+                                <div v-if="errors.resident" class="text-danger">{{ errors.resident }}</div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-6">
                             <label for="gender" class="form-label">Gender</label>
                             <select class="form-select" id="gender" 
                             @blur="() => validateGender(true)"
@@ -122,7 +125,6 @@
 
 <script setup>
 
-
 import { ref } from 'vue';
 import DataTable from 'primevue/datatable'
 import Column from 'primevue/column'
@@ -143,7 +145,12 @@ const submitForm = () => {
     validatePassowrd(true);
     validateReason(true);
     validateGender(true);
-    if (!errors.value.username && !errors.value.password && !errors.value.gender && !errors.value.reason) {
+    validateResident(true);
+    if (!errors.value.username 
+    && !errors.value.password 
+    && !errors.value.gender 
+    && !errors.value.reason 
+    && !errors.value.resident) {
         submittedCards.value.push({ ...formData.value });
         clearForm();
     }
@@ -197,6 +204,14 @@ const validatePassowrd = (blur) => {
         errors.value.password = null;
     }
 }
+
+const validateResident = (blur) => {
+  if (!formData.value.isAustralian) {
+    if (blur) errors.value.resident = "You must be an Australian resident to continue.";
+  } else {
+    errors.value.resident = null;
+  }
+};
 
 const validateGender = (blur) => {
     if (!formData.value.gender) {

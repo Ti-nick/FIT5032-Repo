@@ -1,11 +1,12 @@
 <script setup>
+import FormAcitvity3 from './components/FormAcitvity3.vue';
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
-import Form from './components/Form.vue'
+
 </script>
 
 <template>
-  <Form/>
+  <FormAcitvity3/>
 </template>
 
 <style scoped>
