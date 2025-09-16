@@ -5,12 +5,16 @@ import AboutView from '../views/AboutView.vue'
 import ErrorView from '../views/ErrorView.vue'
 import FirebaseSigninView from '../views/FirebaseSigninView.vue'
 import FirebaseRegisterView from '../views/FirebaseRegisterView.vue'
+import AddBookView from '../views/AddBookView.vue'
+import Logout from '../views/Logout.vue'
 
 const routes = [
   { path: '/', name: 'Home', component: HomeView },
   { path: '/about', name: 'About', component: AboutView, meta: { requiresAuth: true } },
+  { path: '/addBook', name: 'AddBook', component: AddBookView},
   { path: '/error', name: 'Error', component: ErrorView },
   { path: '/FireLogin', name: 'FireLogin', component: FirebaseSigninView},
+  { path: '/Logout', name: 'Logout', component: Logout},
   { path: '/FireRegister', name: 'FireRegister', component: FirebaseRegisterView}
 ]
 

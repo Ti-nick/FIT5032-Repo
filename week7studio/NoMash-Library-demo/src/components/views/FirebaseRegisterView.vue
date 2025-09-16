@@ -11,7 +11,6 @@
     <p v-if="err" style="color:crimson">{{ err }}</p>
   </div>
 </template>
-
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
