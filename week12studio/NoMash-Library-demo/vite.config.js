@@ -15,7 +15,5 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
-  base: process.env.NODE_ENV === 'production'
-  ? '/week12studio/NoMash-Library-demo/'
-  : '/'
+  base: '/FIT5032-Repo/week12studio/NoMash-Library-demo/'
 })

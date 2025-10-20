@@ -32,6 +32,7 @@ jobs:
       with:
         branch: gh-pages
         folder: week12studio/NoMash-Library-demo/dist
+        target-folder: week12studio/NoMash-Library-demo
 
 permissions:
   contents: write
